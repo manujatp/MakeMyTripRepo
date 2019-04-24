@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="61111" started-at="2019-04-24T16:26:44Z" finished-at="2019-04-24T16:27:45Z">
+    <groups>
+      <group name="makemytripgrp">
+        <method signature="SearchPageTest.searchMyFlight(int, int)[pri:0, instance:com.mytrip.qa.tests.SearchPageTest@4e1d422d]" name="searchMyFlight" class="com.mytrip.qa.tests.SearchPageTest"/>
+      </group> <!-- makemytripgrp -->
+    </groups>
+    <test name="MTMTest" duration-ms="61111" started-at="2019-04-24T16:26:44Z" finished-at="2019-04-24T16:27:45Z">
+      <class name="com.mytrip.qa.tests.SearchPageTest">
+        <test-method status="PASS" signature="ConfigFileRead()[pri:0, instance:com.mytrip.qa.tests.SearchPageTest@4e1d422d]" name="ConfigFileRead" is-config="true" duration-ms="15" started-at="2019-04-25T02:26:44Z" finished-at="2019-04-25T02:26:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ConfigFileRead -->
+        <test-method status="PASS" signature="initBrowser()[pri:0, instance:com.mytrip.qa.tests.SearchPageTest@4e1d422d]" name="initBrowser" is-config="true" duration-ms="8280" started-at="2019-04-25T02:26:44Z" finished-at="2019-04-25T02:26:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initBrowser -->
+        <test-method status="PASS" signature="searchMyFlight(int, int)[pri:0, instance:com.mytrip.qa.tests.SearchPageTest@4e1d422d]" name="searchMyFlight" duration-ms="13520" started-at="2019-04-25T02:26:53Z" data-provider="filldata" finished-at="2019-04-25T02:27:06Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[0]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[0]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchMyFlight -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mytrip.qa.tests.SearchPageTest@4e1d422d]" name="tearDown" is-config="true" duration-ms="373" started-at="2019-04-25T02:27:06Z" finished-at="2019-04-25T02:27:07Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=searchMyFlight status=SUCCESS method=SearchPageTest.searchMyFlight(int, int)[pri:0, instance:com.mytrip.qa.tests.SearchPageTest@4e1d422d] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="initBrowser()[pri:0, instance:com.mytrip.qa.tests.SearchPageTest@4e1d422d]" name="initBrowser" is-config="true" duration-ms="8493" started-at="2019-04-25T02:27:07Z" finished-at="2019-04-25T02:27:15Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initBrowser -->
+        <test-method status="PASS" signature="searchMyFlight(int, int)[pri:0, instance:com.mytrip.qa.tests.SearchPageTest@4e1d422d]" name="searchMyFlight" duration-ms="11261" started-at="2019-04-25T02:27:15Z" data-provider="filldata" finished-at="2019-04-25T02:27:26Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchMyFlight -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mytrip.qa.tests.SearchPageTest@4e1d422d]" name="tearDown" is-config="true" duration-ms="109" started-at="2019-04-25T02:27:26Z" finished-at="2019-04-25T02:27:26Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=searchMyFlight status=SUCCESS method=SearchPageTest.searchMyFlight(int, int)[pri:0, instance:com.mytrip.qa.tests.SearchPageTest@4e1d422d] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="initBrowser()[pri:0, instance:com.mytrip.qa.tests.SearchPageTest@4e1d422d]" name="initBrowser" is-config="true" duration-ms="6583" started-at="2019-04-25T02:27:26Z" finished-at="2019-04-25T02:27:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initBrowser -->
+        <test-method status="PASS" signature="searchMyFlight(int, int)[pri:0, instance:com.mytrip.qa.tests.SearchPageTest@4e1d422d]" name="searchMyFlight" duration-ms="11970" started-at="2019-04-25T02:27:33Z" data-provider="filldata" finished-at="2019-04-25T02:27:45Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[5]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchMyFlight -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:com.mytrip.qa.tests.SearchPageTest@4e1d422d]" name="tearDown" is-config="true" duration-ms="103" started-at="2019-04-25T02:27:45Z" finished-at="2019-04-25T02:27:45Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=searchMyFlight status=SUCCESS method=SearchPageTest.searchMyFlight(int, int)[pri:0, instance:com.mytrip.qa.tests.SearchPageTest@4e1d422d] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.mytrip.qa.tests.SearchPageTest -->
+    </test> <!-- MTMTest -->
+  </suite> <!-- Suite -->
+</testng-results>

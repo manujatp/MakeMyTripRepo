@@ -1,0 +1,6 @@
+com\mytrip\qa\base\MTMPage.class
+com\mytrip\qa\pages\SearchPage.class
+com\mytrip\qa\reports\ExtentManager.class
+com\mytrip\qa\util\Helper.class
+com\mytrip\qa\base\TestBase.class
+com\mytrip\qa\pages\HomePage.class
