@@ -8,7 +8,7 @@
 package com.mytrip.qa.pages;
 
 
-
+//importing libraries
 
 import java.util.Iterator;
 import java.util.List;
@@ -46,9 +46,6 @@ public class SearchPage extends MTMPage{
 	
 	@FindBy(xpath="//span[text()='DEPARTURE']")
 	public WebElement _departureLabelElement;
-
-	@FindBy(xpath="//div[@class='DayPicker-Day DayPicker-Day--start DayPicker-Day--selected DayPicker-Day--today']//div[@class='dateInnerCell']//p")
-	public WebElement _todayDateElement;
 
 	@FindBy(xpath="//a[text()='Search']")
 	public WebElement _searchBtnElement;
@@ -99,11 +96,11 @@ public class SearchPage extends MTMPage{
 	public SearchPage setDate(){
 		int i=0;
 		Helper.clickElementByJs(_departureLabelElement, driver);
-	
-		List<WebElement> _depDateListElement = driver.findElements(By.xpath("//div[@class='DayPicker-Day']//div[@class='dateInnerCell']//p"));
-		Iterator<WebElement> itDepDate = _depDateListElement.iterator();
-		WebElement _date= itDepDate.next();
-		_date.click();
+		WebElement _selectedDate=driver.findElement(By.xpath("//div[@class='datePickerContainer']//div//div//div//div//div//div//p//span[@class='selectedDateField appendBottom8 pointer']"));
+		Helper.clickByExplicitWait(_selectedDate,driver);
+		WebElement _todayDateElement =driver.findElement(By.xpath("//div[@class='DayPicker-Day DayPicker-Day--today']//div[@class='dateInnerCell']//p"));
+		Helper.clickByExplicitWait(_todayDateElement,driver);
+		WebElement _date= null;//itDepDate.next();
 		List<WebElement> _retDateListElement = driver.findElements(By.xpath("//div[@class='DayPicker-Day']//div[@class='dateInnerCell']//p"));
 		Iterator<WebElement> itRetDate = _retDateListElement.iterator();
 		while(itRetDate.hasNext()){
@@ -123,6 +120,7 @@ public class SearchPage extends MTMPage{
 	//Clicking Search button
 	public HomePage clickSearchButton(){
 		Helper.clickElementByJs(_searchBtnElement,driver);
+		driver.manage().deleteAllCookies();
 		return new HomePage(driver,_report);
 	}
 

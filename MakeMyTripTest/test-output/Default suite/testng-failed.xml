@@ -5,7 +5,7 @@
     <classes>
       <class name="com.mytrip.qa.tests.SearchPageTest">
         <methods>
-          <include name="searchMyFlight" invocation-numbers="0"/>
+          <include name="searchMyFlight" invocation-numbers="0 1"/>
           <include name="ConfigFileRead"/>
           <include name="tearDown"/>
           <include name="initBrowser"/>

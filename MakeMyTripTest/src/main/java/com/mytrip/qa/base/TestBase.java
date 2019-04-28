@@ -92,6 +92,7 @@ public class TestBase {
 		driver.manage().timeouts().pageLoadTimeout(Helper.WAITTIME, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(Helper.WAITTIME, TimeUnit.SECONDS);
 		driver.get(appURL);
+		driver.manage().deleteAllCookies();
 	}
 	
 	    //Init ChromeBrowser

@@ -20,6 +20,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -38,9 +39,14 @@ public class HomePage extends MTMPage{
 	public WebElement _nonstopCheckElement;
 
 
-	@FindBy(xpath="//label[@for='filter_stop0']//span[@class='box']//span[@class = 'check']")
+	@FindBy(xpath="//label[@for='filter_stop1']//span[@class='box']//span[@class = 'check']")
 	public WebElement _1stopCheckElement;
 
+	@FindBy(xpath="//div[@id='ow_domrt-jrny']")
+	public WebElement _depListLink;
+	
+	@FindBy(xpath="//div[@id='rt-domrt-jrny']")
+	public WebElement _retListLink;
 
 	//constructor declaration
 	public HomePage(WebDriver driver,ExtentTest _report){
@@ -50,7 +56,7 @@ public class HomePage extends MTMPage{
 
 	//Title verification
 	public HomePage titleVerification(){
-		String expTitle ="Flight Booking, Flight Tickets Booking at Lowest Airfare | MakeMyTrip";
+		String expTitle ="Makemytrip";
 		String actualTitle = driver.getTitle();
 		Assert.assertEquals(actualTitle, expTitle);
 		System.out.println("Title of Home Page is same as we expected");
@@ -58,14 +64,23 @@ public class HomePage extends MTMPage{
 	}
 	//Finding total number of departure flights
 	public HomePage totalDepartureFlights(){
-		List<WebElement> _depFlightListElement = driver.findElements(By.xpath("//input[contains(@class, 'splitVw-radioBtn') and @name='splitowJourney']"));
+		JavascriptExecutor js =(JavascriptExecutor)driver;
+		js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+		WebElement _stopsLinkElement = driver.findElement(By.xpath("//p//span[text()='Stops']"));
+		Helper.clickByExplicitWait(_stopsLinkElement,driver);
+		List<WebElement> _depFlightListElement = driver.findElements(By.xpath("//div[@id='ow_domrt-jrny']//div//div[@class='fli-list splitVw-listing']//input[@type='radio']"));
 		System.out.println("Total Number of Departure Flights : " + _depFlightListElement.size());
 		return this;
 	}
 
 	//Finding total number of return flights
 	public HomePage totalReturnFlights(){
-		List<WebElement> _returnFlightListElement = driver.findElements(By.xpath("//input[contains(@class, 'splitVw-radioBtn') and @name='splitrtJourney']"));
+		JavascriptExecutor js =(JavascriptExecutor)driver;
+		js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+		WebElement _stopsLinkElement = driver.findElement(By.xpath("//p//span[text()='Stops']"));
+		Helper.clickElementByJs(_stopsLinkElement,driver);
+	
+		List<WebElement> _returnFlightListElement = driver.findElements(By.xpath("//div[@id='rt-domrt-jrny']//div//div[@class='fli-list splitVw-listing']"));
 		System.out.println("Total Number of Return Flights : " + _returnFlightListElement.size());
 		return this;
 	}
@@ -84,21 +99,37 @@ public class HomePage extends MTMPage{
 
 	//Finding total number of non stop flights
 	public HomePage totalNonStopFlights(){
+	
+		JavascriptExecutor js =(JavascriptExecutor)driver;
+		js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+		WebElement _stopsLinkElement = driver.findElement(By.xpath("//p//span[text()='Stops']"));
+		Helper.clickElementByJs(_stopsLinkElement,driver);
+		
 		selectNonStopCheckbox();
-		List<WebElement> _nonStopDepFlights = driver.findElements(By.xpath("//div[@class='fli-list splitVw-listing']//input[@name='splitowJourney']"));
+		List<WebElement> _nonStopDepFlights = driver.findElements(By.xpath("//div[@id='ow_domrt-jrny']//div//div[@class='fli-list splitVw-listing']"));
+		js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+		Helper.clickElementByJs(_stopsLinkElement,driver);
 		List<WebElement> _nonStopRetFlights = driver.findElements(By.xpath("//div[@id='rt-domrt-jrny']//div//div[@class='fli-list splitVw-listing']"));
 		System.out.println("Total Number of NonStop Departure Flights : " + _nonStopDepFlights.size()
 		+ "\nTotal Number of NonStop Return Flights : "+ _nonStopRetFlights.size());
 		selectNonStopCheckbox();
-		
+
 		return this;
 	}
-
-	//Finding total number of 1 stop flights
+	
+	//total number of one stop flights
 	public HomePage total1StopFlights(){
+		JavascriptExecutor js =(JavascriptExecutor)driver;
+		js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+		WebElement _stopsLinkElement = driver.findElement(By.xpath("//p//span[text()='Stops']"));
+		Helper.clickElementByJs(_stopsLinkElement,driver);
+		
 		selectOneStopCheckbox();
-		List<WebElement> _1StopDepFlights = driver.findElements(By.xpath("//div[@class='fli-list splitVw-listing']//input[@name='splitowJourney']"));
-		List<WebElement> _1StopRetFlights = driver.findElements(By.xpath("//div[@class='fli-list splitVw-listing']//input[contains(@class, 'splitVw-radioBtn') and @name='splitrtJourney']"));
+		List<WebElement> _1StopDepFlights = driver.findElements(By.xpath("//div[@id='ow_domrt-jrny']//div//div[@class='fli-list splitVw-listing']"));
+		
+		js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+		Helper.clickElementByJs(_stopsLinkElement,driver);
+		List<WebElement> _1StopRetFlights = driver.findElements(By.xpath("//div[@id='rt-domrt-jrny']//div//div[@class='fli-list splitVw-listing']"));
 		System.out.println("Total Number of 1 Stop Departure Flights : " + _1StopDepFlights.size()
 		+ "\nTotal Number of 1 Stop Return Flights : "+ _1StopRetFlights.size());
 		selectOneStopCheckbox();
@@ -113,8 +144,8 @@ public class HomePage extends MTMPage{
 				+ "//div[@class='fli-list-body-section clearfix']"
 				+ "//div[contains(@class,'pull-right marL5 text-right split-price-sctn')]"
 				+ "//p[@class='actual-price']//span//span[@class='INR']/parent::span"));
-		Integer actualDepFare = 0,actualRetFare = 0, actualTotalFare = 0;
-		Integer expectedDepFare = 0,expectedRetFare = 0, expectedTotalFare = 0;
+		int actualDepFare = 0,actualRetFare = 0, actualTotalFare = 0;
+		int expectedDepFare = 0,expectedRetFare = 0, expectedTotalFare = 0;
 		int i=0,j=0;
 		String actualFare="",expFare="",befPart="",aftPart="",actual="";
 		char chs=' ',chc =',';
@@ -169,7 +200,7 @@ public class HomePage extends MTMPage{
 				+ "//div[contains(@class,'pull-right marL5 text-right split-price-sctn')]"
 				+ "//p[@class='actual-price']//span//span[@class='INR']/parent::span"));
 
-
+		
 		Iterator<WebElement> itR =_retFareElement.iterator();
 		while(itR.hasNext())
 		{
@@ -202,7 +233,7 @@ public class HomePage extends MTMPage{
 			aftPart = expFare.substring(indexc+1, expFare.length());
 			actual = befPart+aftPart;
 			expectedRetFare = Integer.parseInt(actual);
-
+           
 
 			Assert.assertEquals(actualRetFare, expectedRetFare);
 			System.out.println("Selected Return Flight Fare "+actualRetFare+" is same as the Return Flight Fare "+expectedRetFare+" shown in the bottom");
@@ -212,6 +243,8 @@ public class HomePage extends MTMPage{
 
 		if((i==depopt)&&(j==retopt)){
 			WebElement _totalFareElement = driver.findElement(By.xpath("//span[@class='splitVw-total-fare']//span//span[@class='INR']/parent::span"));
+
+			int discAmount =0;
 			expFare =_totalFareElement.getText();
 			indexs = expFare.indexOf(chs);
 			indexc = expFare.indexOf(chc);
@@ -220,9 +253,17 @@ public class HomePage extends MTMPage{
 			actual = befPart+aftPart;
 
 			expectedTotalFare = Integer.parseInt(actual);
-
-
 			actualTotalFare = actualDepFare + actualRetFare;
+			System.out.println(actualTotalFare+"  "+expectedTotalFare);
+			if(actualTotalFare!=expectedTotalFare){
+				WebElement _discountElement = driver.findElement(By.xpath("//div[@class='footer-fare']//p[@class='disc-applied']//span[@class='INR']/parent::span"));
+				String discFare =_discountElement.getText();
+				indexs = discFare.indexOf(chs);
+				actual = discFare.substring(indexs+1, discFare.length());
+				discAmount = Integer.parseInt(actual);
+				actualTotalFare = actualDepFare + actualRetFare-discAmount;
+			}
+
 			Assert.assertEquals(actualTotalFare, expectedTotalFare);
 			System.out.println("Sum of selected departure flight "+actualTotalFare+" and return flight fares"+"\n" 
 					+"same as the total fare "+expectedTotalFare+" shown in the bottom ");

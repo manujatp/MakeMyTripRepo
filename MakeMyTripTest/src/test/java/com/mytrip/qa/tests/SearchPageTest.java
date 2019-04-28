@@ -10,6 +10,7 @@ package com.mytrip.qa.tests;
 
 //importing libraries
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.mytrip.qa.base.MTMPage;
@@ -18,7 +19,8 @@ import com.mytrip.qa.pages.HomePage;
 import com.mytrip.qa.pages.SearchPage;
 
 
-//class definition
+//class definition added @Listerns class
+@Listeners(com.mytrip.qa.listeners.TestListeners.class)
 public class SearchPageTest extends TestBase {
 
 //Test case
@@ -33,12 +35,16 @@ public class SearchPageTest extends TestBase {
 		_search.setToText();
 		_search.setDate();
 		HomePage _home = new HomePage(driver,_report);
-		_home.titleVerification();
+		
 		_home = _search.clickSearchButton();
-		_home.totalDepartureFlights();
-		_home.totalReturnFlights();
+		
+		_home.titleVerification();
+	//	_home.fareVerification(depopt, retopt);
 		_home.totalNonStopFlights();
 		_home.total1StopFlights();
+		_home.totalDepartureFlights();
+		_home.totalReturnFlights();
+		
 		_home.fareVerification(depopt, retopt);
 	}
 
