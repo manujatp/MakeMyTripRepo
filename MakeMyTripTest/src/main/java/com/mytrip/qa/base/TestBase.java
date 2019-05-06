@@ -73,17 +73,17 @@ public class TestBase {
 		//checking browser type
 		switch(browserType){
 		
-		case "chrome"     : driver = initChromeBrowser(appURL);
+		case "chrome"     : driver = initChromeBrowser();
 						    break;
-		case "ff"         : driver = initFirefoxBrowser(appURL);
+		case "ff"         : driver = initFirefoxBrowser();
 						    break;
-		case "ie"		  :driver =  initIEBrowser(appURL);
+		case "ie"		  :driver =  initIEBrowser();
 							break;
-		case "edge"		  :driver =  initEdgeBrowser(appURL);
+		case "edge"		  :driver =  initEdgeBrowser();
 							break;
 		default           :System.out.println("browser : " + browserType
 				            + " is invalid, Launching Chrome..");
-		                   driver = initChromeBrowser(appURL);
+		                   driver = initChromeBrowser();
 			
 		}
 		System.out.println("Navigate to Url");
@@ -96,7 +96,7 @@ public class TestBase {
 	}
 	
 	    //Init ChromeBrowser
-		private WebDriver initChromeBrowser(String browserType){
+		private WebDriver initChromeBrowser(){
 			System.out.println("Launching chrome browser");
 			WebDriverManager.chromedriver().setup();
 			ChromeOptions options = new ChromeOptions();
@@ -108,7 +108,7 @@ public class TestBase {
 		}
 	
 		//Init Firefox browser
-		private WebDriver initFirefoxBrowser(String browserType){
+		private WebDriver initFirefoxBrowser(){
 			System.out.println("Launching firefox browser");
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
@@ -116,7 +116,7 @@ public class TestBase {
 		}
 		
 		//Init IE browser
-		private WebDriver initIEBrowser(String browserType){
+		private WebDriver initIEBrowser(){
 			System.out.println("Launching ie browser");
 			WebDriverManager.iedriver().setup();
 			driver = new InternetExplorerDriver();
@@ -124,7 +124,7 @@ public class TestBase {
 		}
 		
 		//Init Edge browser
-		private WebDriver initEdgeBrowser(String browserType){
+		private WebDriver initEdgeBrowser(){
 			System.out.println("Launching edge browser");
 			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
